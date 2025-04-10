@@ -3,7 +3,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import api from 'src/lib/api';
 import { useRouter } from 'next/navigation';
-import { log } from 'console';
 
 type User = {
   id: string;
@@ -36,9 +35,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = async (email: string, password: string) => {
+  try {
     const loginResp  = await api.post('auth/login', { email, password });
-    const accessToken = loginResp.data.accessToken
-    localStorage.setItem('accessToken', accessToken)
+    const accessToken = loginResp.data.accessToken;
+    localStorage.setItem('accessToken', accessToken);
 
     const res = await api.get('auth/me',{
       headers: {
@@ -47,12 +47,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
     setUser({id:res.data.id, email: res.data.email});
     router.push('/dashboard');
-  };
+  } catch (err: any) {
+    const errorMessage = err?.response?.data?.message || 'Login failed';
+    throw new Error(errorMessage);
+  }
+};
 
-  const register = async (email: string, password: string) => {
+const register = async (email: string, password: string) => {
+  try {
     await api.post('auth/register', { email, password });
     router.push('/login');
-  };
+  } catch (err: any) {
+    const errorMessage = err?.response?.data?.message || 'Registration failed';
+    throw new Error(errorMessage);
+  }
+};
 
   const logout = async () => {
   const accessToken = localStorage.getItem('accessToken');
