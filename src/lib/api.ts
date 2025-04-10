@@ -1,11 +1,10 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3001";
+import axios from 'axios'
 
-
-import axios from 'axios';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001'
 
 const api = axios.create({
-  baseURL: `${API_BASE}`, // your external BE endpoint
-  withCredentials: true, // send cookies if auth uses them
-});
+	baseURL: `${API_BASE}`, // your external BE endpoint
+	withCredentials: true // send cookies if auth uses them
+})
 
-export default api;
+export default api

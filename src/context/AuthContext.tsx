@@ -36,22 +36,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const login = async (email: string, password: string) => {
   try {
-    const loginResp  = await api.post('auth/login', { email, password });
-    const accessToken = loginResp.data.accessToken;
-    localStorage.setItem('accessToken', accessToken);
+    const loginResp = await api.post('auth/login', { email, password });
+    const { accessToken, refreshToken } = loginResp.data;
 
-    const res = await api.get('auth/me',{
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+
+    const res = await api.get('auth/me', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    setUser({id:res.data.id, email: res.data.email});
+
+    setUser({ id: res.data.id, email: res.data.email });
     router.push('/dashboard');
   } catch (err: any) {
     const errorMessage = err?.response?.data?.message || 'Login failed';
     throw new Error(errorMessage);
   }
 };
+
 
 const register = async (email: string, password: string) => {
   try {
@@ -65,15 +69,23 @@ const register = async (email: string, password: string) => {
 
   const logout = async () => {
   const accessToken = localStorage.getItem('accessToken');
-  await api.post('auth/logout', {}, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
 
-  localStorage.removeItem('accessToken');
-  setUser(null);
-  router.push('/login');
+  try {
+    await api.post(
+      'auth/logout',
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+  } catch (error) {
+    console.warn('Logout failed or unauthorized, redirecting anyway...', error);
+  } finally {
+    setUser(null);
+    router.push('/login');
+  }
 };
 
   return (
