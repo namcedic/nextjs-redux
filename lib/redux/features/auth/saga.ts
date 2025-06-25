@@ -1,10 +1,18 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
-import { loginRequest, loginSuccess, loginFailure, logoutRequest, logoutSuccess, registerRequest } from './slice'
+import {
+	loginRequest,
+	loginSuccess,
+	loginFailure,
+	logoutRequest,
+	logoutSuccess,
+	registerRequest,
+	refreshTokenRequest
+} from './slice'
 import { DecodeUser, User } from '@/types/user'
 import { jwtDecode } from 'jwt-decode'
-import { loginApi, logoutApi, registerApi } from '@/services/auth'
+import { loginApi, logoutApi, refreshTokenApi, registerApi } from '@/services/auth'
 
 
 
@@ -66,6 +74,29 @@ function* handleRegister(action: ReturnType<typeof registerRequest>) {
 	}
 }
 
+function* handleRefreshToken(action: ReturnType<typeof refreshTokenRequest>) {
+	try {
+		const response: AxiosResponse<{ accessToken: string; refreshToken: string}> = yield call(
+			refreshTokenApi,
+			action.payload.payload,
+		);
+
+		const { accessToken, refreshToken } = response.data;
+		if (action.payload.cb) {
+			action.payload.cb({ accessToken, refreshToken });
+		}
+
+		return {accessToken, refreshToken};
+
+	} catch (error: any) {
+		const errorMessage = error.response?.data?.message || 'An unknown error occurred';
+		yield put(loginFailure(errorMessage));
+		if (action.payload.cb) {
+			action.payload.cb({accessToken: '', refreshToken:'', error: errorMessage });
+		}
+	}
+}
+
 function* handleLogout() {
 	try {
 		yield call(logoutApi);
@@ -85,4 +116,5 @@ export function* authSaga() {
 	yield takeLatest(loginRequest.type, handleLogin);
 	yield takeLatest(registerRequest.type, handleRegister);
 	yield takeLatest(logoutRequest.type, handleLogout);
+	yield takeLatest(refreshTokenRequest.type, handleRefreshToken);
 }

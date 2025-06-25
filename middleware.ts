@@ -7,6 +7,8 @@ export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
 	const isPublicPath = PUBLIC_PATHS.includes(pathname);
 
+	return NextResponse.next();
+
 	if (accessToken && isPublicPath) {
 		return NextResponse.redirect(new URL('/', request.url));
 	}

@@ -18,6 +18,10 @@ export interface RegisterPayload {
 	lastName: string;
 }
 
+export interface RefreshTokenPayload {
+	refreshToken: string;
+}
+
 const initialState: AuthState = {
 	isAuthenticated: false,
 	user: null,
@@ -66,6 +70,14 @@ const authSlice = createSlice({
 			}>
 		) => {
 		},
+		refreshTokenRequest: (
+			state,
+			action: PayloadAction<{
+				payload: RefreshTokenPayload,
+				cb?: (result: { accessToken: string; refreshToken: string; error?: string }) => void;
+			}>
+		) => {
+		},
 		logoutRequest: (state) => {
 			state.loading = true;
 		},
@@ -90,6 +102,7 @@ export const {
 	loginSuccess,
 	loginFailure,
 	registerRequest,
+	refreshTokenRequest,
 	logoutRequest,
 	logoutSuccess,
 	loadAuthFromCookie
