@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1aecb4f2-b736-4876-9e00-2c1905f6d778" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,18 +36,19 @@
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/cedric/React/react-auth/styles",
+    "last_opened_file_path": "/home/cedric/React/nextjs-redux/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/cedric/React/react-auth/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/cedric/React/nextjs-redux/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/styles" />
       <recent name="$PROJECT_DIR$/app/me" />
     </key>
@@ -89,6 +92,7 @@
       <workItem from="1750752126367" duration="1528000" />
       <workItem from="1750754064653" duration="7166000" />
       <workItem from="1750813809508" duration="21012000" />
+      <workItem from="1750842560360" duration="3236000" />
     </task>
     <servers />
   </component>
