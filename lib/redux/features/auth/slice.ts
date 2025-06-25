@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User } from '@/types/user'; // Chúng ta sẽ tạo file type này ngay sau đây
+import { User } from '@/types/user';
 
 export interface AuthState {
 	isAuthenticated: boolean;
@@ -8,6 +8,14 @@ export interface AuthState {
 	refreshToken: string | null;
 	loading: boolean;
 	error: string | null;
+}
+
+export interface RegisterPayload {
+	email: string;
+	password: string;
+	confirmPassword: string;
+	firstName: string;
+	lastName: string;
 }
 
 const initialState: AuthState = {
@@ -23,7 +31,6 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		// Action này sẽ được saga lắng nghe
 		loginRequest: (
 			state,
 			action: PayloadAction<{
@@ -50,7 +57,15 @@ const authSlice = createSlice({
 			state.accessToken = null;
 			state.refreshToken = null;
 		},
-		// Action này cũng sẽ được saga lắng nghe
+
+		registerRequest: (
+			state,
+			action: PayloadAction<{
+				payload: RegisterPayload,
+				cb?: (result: { success: boolean; error?: string }) => void;
+			}>
+		) => {
+		},
 		logoutRequest: (state) => {
 			state.loading = true;
 		},
@@ -61,7 +76,6 @@ const authSlice = createSlice({
 			state.accessToken = null;
 			state.loading = false;
 		},
-		// Action để load state từ cookie khi tải lại trang
 		loadAuthFromCookie: (state, action: PayloadAction<{ user: User; accessToken: string; refreshToken: string; }>) => {
 			state.isAuthenticated = true;
 			state.user = action.payload.user;
@@ -75,6 +89,7 @@ export const {
 	loginRequest,
 	loginSuccess,
 	loginFailure,
+	registerRequest,
 	logoutRequest,
 	logoutSuccess,
 	loadAuthFromCookie

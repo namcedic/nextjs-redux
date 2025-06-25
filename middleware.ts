@@ -1,16 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { PUBLIC_PATHS } from '@/config/constant'
 
 export function middleware(request: NextRequest) {
 	const accessToken = request.cookies.get('authToken')?.value;
 	const { pathname } = request.nextUrl;
-
-	const publicPaths = ['/login'];
-
-	const isPublicPath = publicPaths.includes(pathname);
-
-	console.warn('accessToken', accessToken);
-	console.log('accessToken', accessToken);
+	const isPublicPath = PUBLIC_PATHS.includes(pathname);
 
 	if (accessToken && isPublicPath) {
 		return NextResponse.redirect(new URL('/', request.url));

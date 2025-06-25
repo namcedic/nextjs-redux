@@ -4,12 +4,13 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/components/StoreProvider";
 import { AppHeader } from "@/components/Header";
-import { useStore } from "react-redux";
-import { useEffect } from "react";
+import { useStore } from 'react-redux'
+import React, { useEffect } from "react";
 import { loadAuthFromCookie } from "@/lib/redux/features/auth/slice";
 import { AppStore } from "@/lib/redux/store";
 import { jwtDecode } from 'jwt-decode'
 import { DecodeUser } from '@/types/user'
+import "../styles/index.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,10 +47,10 @@ export default function RootLayout({
         <html lang="en">
         <body className={inter.className}>
         <StoreProvider>
-            <AuthLoader>
-                <AppHeader />
-                <main>{children}</main>
-            </AuthLoader>
+                <AuthLoader>
+                    <AppHeader />
+                    <main>{children}</main>
+                </AuthLoader>
         </StoreProvider>
         </body>
         </html>

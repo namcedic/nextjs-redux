@@ -31,19 +31,20 @@ export const AppHeader = () => {
 			height: '64px'
 		}}>
 			<Link href="/" passHref>
-				<Text strong style={{ fontSize: '20px', cursor: 'pointer' }}>Redux Saga App</Text>
+				<Text strong style={{ fontSize: '20px', cursor: 'pointer' }}>Cedric App</Text>
 			</Link>
 			<div>
-				debugger
 				{isAuthenticated && user ? (
 					<div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
 						<Text>Welcome {user.email}!</Text>
 						<Button type="primary" onClick={handleLogout}>Logout</Button>
 					</div>
 				) : (
-					<Link href="/login" passHref>
-						<Button>Login</Button>
-					</Link>
+					<><Link href="/login" passHref>
+						<Button type="primary" className="primary">Login</Button>
+					</Link><Link href="/register" passHref>
+						<Button type="link">Register</Button>
+					</Link></>
 				)}
 			</div>
 		</header>

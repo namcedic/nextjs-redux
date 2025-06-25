@@ -1,15 +1,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
-import { loginRequest, loginSuccess, loginFailure, logoutRequest, logoutSuccess } from './slice';
+import { loginRequest, loginSuccess, loginFailure, logoutRequest, logoutSuccess, registerRequest } from './slice'
 import { DecodeUser, User } from '@/types/user'
 import { jwtDecode } from 'jwt-decode'
+import { loginApi, logoutApi, registerApi } from '@/services/auth'
 
-// --- API Calls ---
-const loginApi = (email: string, password: string) =>
-	axios.post('http://localhost:3001/auth/login', { email, password });
-
-const logoutApi = () => axios.post('http://localhost:3001/auth/logout');
 
 
 // --- Worker Sagas ---
@@ -26,7 +22,6 @@ function* handleLogin(action: ReturnType<typeof loginRequest>) {
 		Cookies.set('accessToken', accessToken, { expires: 7 });
 		Cookies.set('refreshToken', refreshToken, { expires: 30 });
 
-		// Lưu token vào cookie
 		localStorage.setItem('accessToken', accessToken);
 		localStorage.setItem('refreshToken', refreshToken);
 		Cookies.set('authToken', accessToken);
@@ -50,13 +45,33 @@ function* handleLogin(action: ReturnType<typeof loginRequest>) {
 	}
 }
 
+function* handleRegister(action: ReturnType<typeof registerRequest>) {
+	try {
+		const response: AxiosResponse<{ success: boolean }> = yield call(
+			registerApi,
+			action.payload.payload,
+		);
+
+		const { success } = response.data;
+		if (action.payload.cb) {
+			action.payload.cb({ success });
+		}
+
+	} catch (error: any) {
+		const errorMessage = error.response?.data?.message || 'An unknown error occurred';
+		yield put(loginFailure(errorMessage));
+		if (action.payload.cb) {
+			action.payload.cb({ success: false, error: errorMessage });
+		}
+	}
+}
+
 function* handleLogout() {
 	try {
 		yield call(logoutApi);
 	} catch (error) {
 		console.error("Logout API failed, proceeding with client-side logout.", error);
 	} finally {
-		// Xóa cookie dù API có lỗi hay không
 		localStorage.removeItem('accessToken');
 		localStorage.removeItem('refreshToken');
 		Cookies.remove('accessToken');
@@ -68,5 +83,6 @@ function* handleLogout() {
 
 export function* authSaga() {
 	yield takeLatest(loginRequest.type, handleLogin);
+	yield takeLatest(registerRequest.type, handleRegister);
 	yield takeLatest(logoutRequest.type, handleLogout);
 }
