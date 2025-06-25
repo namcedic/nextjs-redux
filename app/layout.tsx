@@ -38,7 +38,6 @@ const AuthLoader = ({ children }: { children: React.ReactNode }) => {
                                     if (data.refreshToken) {
                                         localStorage.setItem("refreshToken", data.refreshToken);
                                     }
-                                    console.log("data", data);
                                     const newDecoded: DecodeUser = jwtDecode(data.accessToken);
                                     const user = {
                                         id: newDecoded.sub,
@@ -52,8 +51,6 @@ const AuthLoader = ({ children }: { children: React.ReactNode }) => {
                                 } else {
                                     console.error("Refresh token failed, logging out");
                                     localStorage.removeItem("accessToken");
-                                    // localStorage.removeItem("refreshToken");
-                                    // window.location.href = "/login";
                                 }
                             }
                         })
