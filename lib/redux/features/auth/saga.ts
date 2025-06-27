@@ -16,7 +16,6 @@ import { loginApi, logoutApi, refreshTokenApi, registerApi } from '@/services/au
 
 
 
-// --- Worker Sagas ---
 function* handleLogin(action: ReturnType<typeof loginRequest>) {
 	try {
 		const response: AxiosResponse<{ user: User; accessToken: string, refreshToken: string }> = yield call(

@@ -3,19 +3,18 @@
 import { Inter } from "next/font/google";
 import { StoreProvider } from "@/components/StoreProvider";
 import { AppHeader } from "@/components/Header";
-import { useDispatch, useStore } from 'react-redux'
 import React, { useEffect } from "react";
 import { loadAuthFromCookie, refreshTokenRequest } from "@/lib/redux/features/auth/slice";
-import { AppStore } from "@/lib/redux/store";
 import { jwtDecode } from 'jwt-decode'
 import { DecodePayload, DecodeUser } from '@/types/user'
 import "../styles/index.scss";
+import { useAppDispatch, useAppStore } from '@/lib/redux/hook'
 
 const inter = Inter({ subsets: ["latin"] });
 
 const AuthLoader = ({ children }: { children: React.ReactNode }) => {
-    const store = useStore() as AppStore;
-    const dispatch = useDispatch();
+    const store = useAppStore();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         const refreshAccessToken = async () => {

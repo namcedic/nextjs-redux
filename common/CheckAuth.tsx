@@ -3,10 +3,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/lib/redux/store';
 import { Auth } from '@/storages/Auth'
 import { RESTRICTED_PATHS } from '@/config/constant'
+import { useAppSelector } from '@/lib/redux/hook'
 
 interface CheckAuthProps {
 	children: React.ReactNode;
@@ -14,7 +14,7 @@ interface CheckAuthProps {
 
 const CheckAuth: React.FC<CheckAuthProps> = ({ children }) => {
 	const router = useRouter();
-	const user = useSelector((state: RootState) => state.auth.user);
+	const user = useAppSelector((state: RootState) => state.auth.user);
 	const [allowView, setAllowView] = useState<boolean>(true);
 	const [auth, setAuth] = useState<boolean>(false);
 

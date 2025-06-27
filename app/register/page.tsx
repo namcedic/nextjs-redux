@@ -3,15 +3,15 @@
 import { Form, Input, Button, Typography, message, notification } from 'antd'
 import Link from "next/link";
 import "../../styles/register.scss";
-import { useDispatch } from 'react-redux'
 import { registerRequest } from '@/lib/redux/features/auth/slice'
 import { useRouter } from 'next/navigation'
+import { useAppDispatch } from '@/lib/redux/hook'
 
 const { Title } = Typography;
 
 const RegisterPage = () => {
 	const [form] = Form.useForm();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const router = useRouter();
 
 	const validateConfirmPassword = async (_: any, value: any) => {

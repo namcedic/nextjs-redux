@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1aecb4f2-b736-4876-9e00-2c1905f6d778" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/styles/header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Counter.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Products.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/features/counter/saga.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/features/counter/selectors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/features/counter/slice.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/rootSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/rootSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/CheckAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/common/CheckAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/features/auth/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/features/auth/saga.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +97,7 @@
       <workItem from="1750842560360" duration="4731000" />
       <workItem from="1750899763700" duration="4893000" />
       <workItem from="1750986619340" duration="1201000" />
-      <workItem from="1751012477571" duration="673000" />
+      <workItem from="1751012477571" duration="1203000" />
     </task>
     <servers />
   </component>
