@@ -1,7 +1,6 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { StoreProvider } from "@/components/StoreProvider";
 import { AppHeader } from "@/components/Header";
 import { useDispatch, useStore } from 'react-redux'

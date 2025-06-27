@@ -21,22 +21,14 @@ export const AppHeader = () => {
 	};
 
 	return (
-		<header style={{
-			display: 'flex',
-			justifyContent: 'space-between',
-			alignItems: 'center',
-			padding: '0 24px',
-			background: '#fff',
-			borderBottom: '1px solid #f0f0f0',
-			height: '64px'
-		}}>
+		<header className="header-bar">
 			<Link href="/" passHref>
 				<Text strong style={{ fontSize: '20px', cursor: 'pointer' }}>Cedric App</Text>
 			</Link>
 			<div>
 				{isAuthenticated && user ? (
-					<div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-						<Text>Welcome {user.email}!</Text>
+					<div className='user-info'>
+						<p>Welcome {user.email}!</p>
 						<Button type="primary" onClick={handleLogout}>Logout</Button>
 					</div>
 				) : (

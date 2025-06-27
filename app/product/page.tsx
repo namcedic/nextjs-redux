@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { Pagination, Spin, List, Card } from 'antd';
-import axios from 'axios';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 const PAGE_SIZE = 10;
