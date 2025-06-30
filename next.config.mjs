@@ -1,4 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-export default nextConfig
+const nextConfig = {
+	output: 'export',
+	basePath: '/next-redux',
+	assetPrefix: '/next-redux/',
+	trailingSlash: true
+}
+module.exports = nextConfig
