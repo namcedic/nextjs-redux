@@ -1,7 +1,7 @@
 const nextConfig = {
 	output: 'export',
-	basePath: '/nextjs-redux',
-	assetPrefix: '/nextjs-redux/',
+	basePath: '',
+	assetPrefix: '',
 	trailingSlash: true
 }
 export default nextConfig
