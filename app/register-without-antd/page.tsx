@@ -60,7 +60,7 @@ const RegisterPage = () => {
 	}
 
 	return (
-		<div className={styles.container}>
+		<div className='register-container'>
 			<div className={styles.card}>
 				<h2 className={styles.title}>Register</h2>
 				<form onSubmit={handleSubmit} noValidate>

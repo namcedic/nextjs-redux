@@ -66,3 +66,57 @@ $status_9: #cd00cd;
 $status_10: #cd69c9;
 $status_12: #8968cd;
 $status_13: #008080;
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1200px;
+	}
+}
+
+@media (min-width: 1366px) {
+	.container {
+		max-width: 1200px;
+	}
+}
+
+@media (min-width: 1400px) {
+	.container {
+		max-width: 1360px;
+	}
+}
+
+@media (min-width: 1600px) {
+	.container {
+		max-width: 1430px;
+	}
+}
+
+@media (max-width: 1199.98px) {
+	.container {
+		max-width: 99%;
+	}
+}
+
+.container {
+	position: relative;
+	margin: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $main_font;
+	color: $color_text;
+	line-height: 1.2;
+}
+
+h1 {
+	font-weight: 600;
+}
+
+h2 {
+	font-weight: 500;
+}
+
+h3,h4,h5,h6 {
+	font-weight: 400;
+}

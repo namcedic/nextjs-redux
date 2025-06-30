@@ -8,14 +8,13 @@ export function middleware(request: NextRequest) {
 	const isPublicPath = PUBLIC_PATHS.includes(pathname)
 	console.log(accessToken, isPublicPath, pathname)
 
-	if (accessToken && isPublicPath) {
+	if (accessToken && isPublicPath && pathname !== '/') {
 		return NextResponse.redirect(new URL('/', request.url))
 	}
 
 	if (!accessToken && !isPublicPath) {
 		return NextResponse.redirect(new URL('/login', request.url))
 	}
-	console.log('next')
 
 	return NextResponse.next()
 }
