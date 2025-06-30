@@ -1,7 +1,2 @@
-const nextConfig = {
-	output: 'export',
-	basePath: '',
-	assetPrefix: '',
-	trailingSlash: true
-}
+const nextConfig = {}
 export default nextConfig
