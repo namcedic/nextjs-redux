@@ -2,7 +2,6 @@
 
 import { Form, Input, Button, Typography, notification } from 'antd'
 import Link from 'next/link'
-import '../../styles/register.scss'
 import { registerRequest } from '@/lib/redux/features/auth/slice'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/lib/redux/hook'
