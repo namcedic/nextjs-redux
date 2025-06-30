@@ -1,6 +1,6 @@
 'use client'
 
-import { Form, Input, Button, Typography, message, notification } from 'antd'
+import { Form, Input, Button, Typography, notification } from 'antd'
 import Link from 'next/link'
 import '../../styles/register.scss'
 import { registerRequest } from '@/lib/redux/features/auth/slice'
