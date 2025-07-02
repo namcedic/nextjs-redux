@@ -6,7 +6,8 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/lib/redux/hook'
 import { productsRequest } from '@/lib/redux/features/product/slice'
 import Search from 'antd/lib/input/Search'
-import { AudioOutlined } from '@ant-design/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 
 const PAGE_SIZE = 10
 
@@ -62,6 +63,21 @@ const ProductPage = () => {
 
 	return (
 		<>
+			<div className='search-bar'>
+				<select className='domain-select'>
+					<option value='1688'>1688.com</option>
+					<option value='taobao'>Taobao.com</option>
+				</select>
+				<input
+					className='search-input'
+					type='text'
+					placeholder='Nhập từ khóa hoặc link sản phẩm trên Taobao/Tmall/1688'
+				/>
+				<button className='search-button'>
+					<FontAwesomeIcon icon={faSearch} />
+				</button>
+			</div>
+
 			<div className='product-search'>
 				<Search placeholder='input search text' onSearch={onSearch} />{' '}
 			</div>
