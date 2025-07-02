@@ -2,3 +2,26 @@
 	display: flex;
 	justify-content: center;
 }
+
+.product-search {
+	max-width: 450px;
+	height: 45px;
+	margin: 20px auto;
+}
+
+
+.product-search .ant-input-wrapper {
+	height: 45px;
+	font-size: 16px;
+}
+
+.product-search .ant-input {
+	height: 100%;
+	font-size: 16px;
+	padding: 6px 12px;
+}
+
+.product-search .ant-btn {
+	height: 45px;
+	font-size: 16px;
+}
